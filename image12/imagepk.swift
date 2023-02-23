@@ -8,10 +8,6 @@ import Foundation
 import PhotosUI
 //import SwiftUI
 
-
-
-
-
 import SwiftUI
 
 struct ImagePicker: UIViewControllerRepresentable {
