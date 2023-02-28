@@ -10,40 +10,124 @@ import SwiftUI
 struct ContentView: View {
     @State private var image : UIImage?
     @State private var showSheet = false
+    @StateObject var model = DrawingViewModel()
+    @State private var isPressed = false
     var body: some View {
-        HStack {
-            if let image = image{
-                Image(uiImage: image)
-                    .resizable()
-                    .cornerRadius(50)
-                    .frame(width: 100, height: 100)
-                    .background(Color.black.opacity(0.2))
-                    .aspectRatio(contentMode: .fill)
-                .clipShape(Circle())
+        ZStack{
+            NavigationView{
+                VStack{
+                    if var image = model.image{
+                        ZStack{
+                            DrawingScren()
+                                .environmentObject(model)
+                            /*ForEach(model.textBoox){ boox in
+                                Text(model.textBoox[model.currnerIndex].id == boox.id && model.addnewBox ? "" : boox.text)
+                                    .font(.system(size: 30))
+                                    //.offset(boox.position)
+                                    .offset(x: position.width + dragOffset.width, y: position.height + dragOffset.height)
+                                    .animation(.easeInOut, value: dragOffset)
+                                    .fontWeight(boox.isBold ? .bold : .none)
+                                    .foregroundColor(boox.textColer)
+                                    .gesture(
+                                        DragGesture()
+                                            .updating(boox.$dragOffset, body: { (value, state, transaction) in
+                                                state = value.translation
+                                                model.textBoox[getIndex(textbox: boox)].position = state
+                                            })
+                                            .onEnded({ (value) in
+                                                self.position.height += value.translation.height
+                                                self.position.width += value.translation.width
+                                                model.textBoox[getIndex(textbox: boox)].lestoffset = value.translation
+                                            })
+                                    )
+                            }*/
+                        }
+                    }
+                    
+                    Text("Change photo")
+                        .font(.headline)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 50)
+                        .background(LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.262745098, green: 0.0862745098, blue: 0.8588235294, alpha: 1)), Color(#colorLiteral(red: 0.5647058824, green: 0.462745098, blue: 0.9058823529, alpha: 1))]), startPoint: .top, endPoint: .bottom))
+                        .cornerRadius(16)
+                        .foregroundColor(.white)
+                        .padding(.horizontal, 20)
+                        .onTapGesture {
+                            showSheet = true
+                            model.nillimage()
+                        }
+                        
+                }
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button("Deleet") {
+                            model.nillimage()
+                        }
+                    }
+                    
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button("Show Tools") {
+                            model.textBoox.append(TextBox())
+                            model.currnerIndex = model.textBoox.count - 1
+                            withAnimation{
+                                model.addnewBox.toggle()
+                            }
+                            model.toolePicker.setVisible(false, forFirstResponder: model.canvas)
+                            model.canvas.resignFirstResponder()
+                        }
+                    }
+                }
+            }
+            if model.addnewBox {
+                Color.black.opacity(0.75)
+                    .ignoresSafeArea()
+                TextField("Type Hera", text: $model.textBoox[model.currnerIndex].text)
+                    .font(.system(size: 35))
+                    .colorScheme(.dark)
+                    .foregroundColor(model.textBoox[model.currnerIndex].textColer)
+                    .padding()
+                HStack{
+                    Button{
+                        model.toolePicker.setVisible(true, forFirstResponder: model.canvas)
+                       model.canvas.becomeFirstResponder()
+                        withAnimation{
+                            model.addnewBox = false
+                        }
+                    }label: {
+                        Text("add")
+                            .fontWeight(.heavy)
+                            .foregroundColor(.white)
+                            .padding()
+                    }
+                    Spacer()
+                    Button{
+                        model.canselTextView()
+                    }label: {
+                        Text("Cansel")
+                            .fontWeight(.heavy)
+                            .foregroundColor(.white)
+                            .padding()
+                    }
+                }
+                .overlay{
+                    ColorPicker("", selection: $model.textBoox[model.currnerIndex].textColer)
+                        .labelsHidden()
+                }
+                .frame(maxHeight:.infinity , alignment: .top)
                 
             }
-
-     Text("Change photo")
-         .font(.headline)
-         .frame(maxWidth: .infinity)
-         .frame(height: 50)
-         .background(LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.262745098, green: 0.0862745098, blue: 0.8588235294, alpha: 1)), Color(#colorLiteral(red: 0.5647058824, green: 0.462745098, blue: 0.9058823529, alpha: 1))]), startPoint: .top, endPoint: .bottom))
-         .cornerRadius(16)
-         .foregroundColor(.white)
-             .padding(.horizontal, 20)
-             .onTapGesture {
-               showSheet = true
-             }
+            
         }
-    .padding(.horizontal, 20)
-    .sheet(isPresented: $showSheet) {
-                // Pick an image from the photo library:
-        ImagePicker(sourceType: .photoLibrary, selectedImage: self.$image)
-
-                //  If you wish to take a photo from camera instead:
-                // ImagePicker(sourceType: .camera, selectedImage: self.$image)
+        .sheet(isPresented: $showSheet) {
+            ImagePicker(sourceType: .photoLibrary, selectedImage: self.$model.image)
         }
-
+    }
+    
+    func getIndex(textbox:TextBox)-> Int{
+        let index = model.textBoox.firstIndex{ (boox) -> Bool in
+            return textbox.id == boox.id
+        } ?? 0
+        return index
     }
 }
 

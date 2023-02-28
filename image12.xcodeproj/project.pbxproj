@@ -17,6 +17,11 @@
 		2D27A02829A78DE7008F9A08 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 2D27A02729A78DE7008F9A08 /* SwiftyJSON */; };
 		2D27A02A29A78EEE008F9A08 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D27A02929A78EEE008F9A08 /* Home.swift */; };
 		2D27A02C29A78EF8008F9A08 /* viewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D27A02B29A78EF8008F9A08 /* viewModel.swift */; };
+		2D27A02E29A7D300008F9A08 /* DrawingVie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D27A02D29A7D300008F9A08 /* DrawingVie.swift */; };
+		2D2F334529A7F47600AD3AEF /* DrawingScren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2F334429A7F47600AD3AEF /* DrawingScren.swift */; };
+		2D2F334729A7F4AA00AD3AEF /* DrawingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2F334629A7F4AA00AD3AEF /* DrawingViewModel.swift */; };
+		2D316C2829AD321C0024075B /* TextBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D316C2729AD321C0024075B /* TextBox.swift */; };
+		2DA1F36D29AE3DCF0003B156 /* gesturesview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA1F36C29AE3DCF0003B156 /* gesturesview.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +34,11 @@
 		2D27A01C29A77EC5008F9A08 /* imagepk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imagepk.swift; sourceTree = "<group>"; };
 		2D27A02929A78EEE008F9A08 /* Home.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Home.swift; path = ../../../Documents/ImageGeneratorAi/ImageGeneratorAi/Home.swift; sourceTree = "<group>"; };
 		2D27A02B29A78EF8008F9A08 /* viewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = viewModel.swift; path = ../../../Documents/ImageGeneratorAi/ImageGeneratorAi/viewModel.swift; sourceTree = "<group>"; };
+		2D27A02D29A7D300008F9A08 /* DrawingVie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingVie.swift; sourceTree = "<group>"; };
+		2D2F334429A7F47600AD3AEF /* DrawingScren.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingScren.swift; sourceTree = "<group>"; };
+		2D2F334629A7F4AA00AD3AEF /* DrawingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingViewModel.swift; sourceTree = "<group>"; };
+		2D316C2729AD321C0024075B /* TextBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBox.swift; sourceTree = "<group>"; };
+		2DA1F36C29AE3DCF0003B156 /* gesturesview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gesturesview.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +82,11 @@
 				2D27A01329A77EAD008F9A08 /* image12.entitlements */,
 				2D27A01429A77EAD008F9A08 /* Preview Content */,
 				2D27A01C29A77EC5008F9A08 /* imagepk.swift */,
+				2D27A02D29A7D300008F9A08 /* DrawingVie.swift */,
+				2D2F334429A7F47600AD3AEF /* DrawingScren.swift */,
+				2D2F334629A7F4AA00AD3AEF /* DrawingViewModel.swift */,
+				2D316C2729AD321C0024075B /* TextBox.swift */,
+				2DA1F36C29AE3DCF0003B156 /* gesturesview.swift */,
 			);
 			path = image12;
 			sourceTree = "<group>";
@@ -165,8 +180,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D27A01029A77EA9008F9A08 /* ContentView.swift in Sources */,
+				2D316C2829AD321C0024075B /* TextBox.swift in Sources */,
+				2DA1F36D29AE3DCF0003B156 /* gesturesview.swift in Sources */,
+				2D2F334729A7F4AA00AD3AEF /* DrawingViewModel.swift in Sources */,
 				2D27A00E29A77EA9008F9A08 /* image12App.swift in Sources */,
+				2D2F334529A7F47600AD3AEF /* DrawingScren.swift in Sources */,
 				2D27A02A29A78EEE008F9A08 /* Home.swift in Sources */,
+				2D27A02E29A7D300008F9A08 /* DrawingVie.swift in Sources */,
 				2D27A02C29A78EF8008F9A08 /* viewModel.swift in Sources */,
 				2D27A01D29A77EC5008F9A08 /* imagepk.swift in Sources */,
 			);
@@ -225,6 +245,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -277,6 +298,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
