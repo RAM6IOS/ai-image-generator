@@ -22,12 +22,6 @@ struct DrawingScren: View {
     }
 }
 
-struct DrawingScren_Previews: PreviewProvider {
-    static var previews: some View {
-       ContentView()
-    }
-}
-
 struct canvert: UIViewRepresentable {
     @Binding var canvas :  PKCanvasView
     @Binding var image: UIImage?
