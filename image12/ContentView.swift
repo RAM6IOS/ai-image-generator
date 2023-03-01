@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ContentView2: View {
     @State private var image : UIImage?
     @State private var showSheet = false
     @StateObject var model = DrawingViewModel()
@@ -20,27 +20,6 @@ struct ContentView: View {
                         ZStack{
                             DrawingScren()
                                 .environmentObject(model)
-                            /*ForEach(model.textBoox){ boox in
-                                Text(model.textBoox[model.currnerIndex].id == boox.id && model.addnewBox ? "" : boox.text)
-                                    .font(.system(size: 30))
-                                    //.offset(boox.position)
-                                    .offset(x: position.width + dragOffset.width, y: position.height + dragOffset.height)
-                                    .animation(.easeInOut, value: dragOffset)
-                                    .fontWeight(boox.isBold ? .bold : .none)
-                                    .foregroundColor(boox.textColer)
-                                    .gesture(
-                                        DragGesture()
-                                            .updating(boox.$dragOffset, body: { (value, state, transaction) in
-                                                state = value.translation
-                                                model.textBoox[getIndex(textbox: boox)].position = state
-                                            })
-                                            .onEnded({ (value) in
-                                                self.position.height += value.translation.height
-                                                self.position.width += value.translation.width
-                                                model.textBoox[getIndex(textbox: boox)].lestoffset = value.translation
-                                            })
-                                    )
-                            }*/
                         }
                     }
                     
@@ -119,7 +98,7 @@ struct ContentView: View {
             
         }
         .sheet(isPresented: $showSheet) {
-            ImagePicker(sourceType: .photoLibrary, selectedImage: self.$model.image)
+           
         }
     }
     
