@@ -9,21 +9,13 @@
 import SwiftUI
 import CoreImage
 import CoreImage.CIFilterBuiltins
-
 struct HomeView: View {
     @StateObject private var viewModel = ImageGeneratorViewModel()
     @State var prompt: String = ""
-    @State var generatedImage: UIImage?
     @State var isLoading: Bool = false
     @StateObject var model = DrawingViewModel()
-   
-        @State private var filterIntensity = 0.5
-
-        @State private var showingImagePicker = false
-        @State private var currentFilter: CIFilter = CIFilter.sepiaTone()
-        let context = CIContext()
-
-        @State private var showingFilterSheet = false
+    @StateObject var filter = FilterViewModel()
+    @State var showView = "Crystallize"
     var body: some View {
         NavigationView{
             ZStack {
@@ -41,7 +33,7 @@ struct HomeView: View {
                             .bold()
                             .offset(y: 10)
                         Spacer()
-                        if let image = model.image {
+                        if let image = filter.image {
                             Image(uiImage: image)
                                 .frame(width: 300, height: 300)
                             
@@ -52,10 +44,18 @@ struct HomeView: View {
                                 .opacity(0.5)
                         }
                         Spacer()
+                        Button{
+                            filter.lodimage2()
+                        }label: {
+                            Text("lodaImage")
+                                .foregroundColor(Color.red)
+                                .background(.black)
+                                .frame(width: 100, height: 100)
+                        }
                         HStack {
-                                            Text("Intensity")
-                                            Slider(value: $filterIntensity)
-                                                .onChange(of: filterIntensity) { _ in applyProcessing() }
+                                            Text(showView)
+                            Slider(value: $filter.filterIntensity)
+                                .onChange(of: filter.filterIntensity) { _ in filter.applyProcessing() }
                                         }
                                         .padding(.vertical)
                         Text("ENTER YOUR PROMPT BELOW")
@@ -70,7 +70,7 @@ struct HomeView: View {
                         Button{
                             Task {
                                 isLoading = true
-                                model.image = await viewModel.generateImage(from: prompt)
+                                    filter.image = await viewModel.generateImage(from: prompt)
                                 isLoading = false
                             }
                         }label: {
@@ -88,29 +88,52 @@ struct HomeView: View {
                     }
                 }
             }
-            .confirmationDialog("Select a filter", isPresented: $showingFilterSheet) {
-                            Button("Crystallize") { setFilter(CIFilter.crystallize()) }
-                            Button("Edges") { setFilter(CIFilter.edges()) }
-                            Button("Gaussian Blur") { setFilter(CIFilter.gaussianBlur()) }
-                            Button("Pixellate") { setFilter(CIFilter.pixellate()) }
-                            Button("Sepia Tone") { setFilter(CIFilter.sepiaTone()) }
-                            Button("Unsharp Mask") { setFilter(CIFilter.unsharpMask()) }
-                            Button("Vignette") { setFilter(CIFilter.vignette()) }
+            .confirmationDialog("Select a filter", isPresented: $filter.showingFilterSheet) {
+              
+                Button("Edges") { filter.setFilter(CIFilter.edges())
+                    showView = "Edges"
+                    filter.filterIntensity = 0.0
+                }
+                Button("Gaussian Blur") {filter.setFilter(CIFilter.gaussianBlur())
+                    showView = "Gaussian Blur"
+                    filter.filterIntensity = 0.0
+                }
+                Button("Pixellate") { filter.setFilter(CIFilter.pixellate())
+                    showView = "Pixellate"
+                    filter.filterIntensity = 0.0
+                }
+                Button("Sepia Tone") { filter.setFilter(CIFilter.sepiaTone())
+                    showView = "Sepia Tone"
+                    filter.filterIntensity = 0.0
+                }
+                Button("Unsharp Mask") { filter.setFilter(CIFilter.unsharpMask())
+                    showView = "Unsharp Mask"
+                        filter.filterIntensity = 0.0
+                }
+                Button("Vignette") { filter.setFilter(CIFilter.vignette())
+                    showView = "Vignette"
+                    filter.filterIntensity = 0.0
+                }
+                Button("Crystallize") { filter.setFilter(CIFilter.crystallize())
+                    showView = "Crystallize"
+                    filter.filterIntensity = 0.0
+                }
                             Button("Cancel", role: .cancel) { }
                         }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                   // Button("Deleet") {
-                    //    model.nillimage()
-                   // }
+                    Button("Deleet") {
+                    filter.nillimage()
+                    }
+                }
+                ToolbarItem(placement: .navigationBarLeading) {
                     Button("Filter") {
-                        showingFilterSheet = true
+                        filter.showingFilterSheet = true
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button{
-                        let imageSaver = ImageSaver()
-                        imageSaver.writeToPhotoAlbum(image: model.image!)
+                     filter.writeToPhotoAlbum(image: filter.image!)
                     } label:{
                         Image(systemName: "square.and.arrow.down")
                                                     .font(.system(size: 20))
@@ -124,41 +147,6 @@ struct HomeView: View {
             .navigationTitle("Image Generator Ai")
             .navigationBarTitleDisplayMode(.inline)
             .background(Color("backgroundColor"))
-        }
-    }
-    func loadImage() {
-        guard let inputImage = model.image else { return }
-
-
-            let beginImage = CIImage(image: inputImage)
-            currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
-            applyProcessing()
-        }
-    func applyProcessing() {
-            let inputKeys = currentFilter.inputKeys
-
-            if inputKeys.contains(kCIInputIntensityKey) { currentFilter.setValue(filterIntensity, forKey: kCIInputIntensityKey) }
-            if inputKeys.contains(kCIInputRadiusKey) { currentFilter.setValue(filterIntensity * 200, forKey: kCIInputRadiusKey) }
-            if inputKeys.contains(kCIInputScaleKey) { currentFilter.setValue(filterIntensity * 10, forKey: kCIInputScaleKey) }
-
-            guard let outputImage = currentFilter.outputImage else { return }
-
-            if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
-                let uiImage = UIImage(cgImage: cgimg)
-                model.image = uiImage
-               
-            }
-        }
-    func setFilter(_ filter: CIFilter) {
-            currentFilter = filter
-            loadImage()
-        }
-    class ImageSaver: NSObject {
-        func writeToPhotoAlbum(image: UIImage) {
-            UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveCompleted), nil)
-        }
-        @objc func saveCompleted(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
-            print("Save finished!")
         }
     }
 }
