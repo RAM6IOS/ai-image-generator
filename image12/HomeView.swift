@@ -3,12 +3,10 @@
 //  image12
 //
 //  Created by Bouchedoub Ramzi on 2/3/2023.
-//
-
-
 import SwiftUI
 import CoreImage
 import CoreImage.CIFilterBuiltins
+
 struct HomeView: View {
     @StateObject private var viewModel = ImageGeneratorViewModel()
     @State var prompt: String = ""
@@ -16,107 +14,98 @@ struct HomeView: View {
     @StateObject var model = DrawingViewModel()
     @StateObject var filter = FilterViewModel()
     @State var showView = "Crystallize"
+   
     var body: some View {
         NavigationView{
-            ZStack {
+            VStack{
                 if isLoading {
                     ProgressView()
                         .tint(.gray)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .background(Color("backgroundColor"))
                 } else {
-                   
                     VStack {
-                        Text("DALL-E IMAGE GENERATOR")
-                            .foregroundColor(.white.opacity(0.8))
-                            .font(.title2)
-                            .bold()
-                            .offset(y: 10)
-                        Spacer()
                         if let image = filter.image {
-                            Image(uiImage: image)
-                                .frame(width: 300, height: 300)
-                            
+                            GeometryReader { (proxy: GeometryProxy) in
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: proxy.size.width  ,height:400)
+                            }
                         } else {
                             Image("placeholderImage")
                                 .resizable()
                                 .frame(width: 300, height: 300)
                                 .opacity(0.5)
                         }
-                        Spacer()
-                        Button{
-                            filter.lodimage2()
-                        }label: {
-                            Text("lodaImage")
-                                .foregroundColor(Color.red)
-                                .background(.black)
-                                .frame(width: 100, height: 100)
+                    }
+                }
+                VStack{
+                    if let image = filter.image{
+                        VStack{
+                            ShareLink(item: Image(uiImage: image), preview: SharePreview("Big Ben", image:Image(uiImage: image)))
+                                .foregroundColor(Color.white)
                         }
+                        .padding()
+                        .background(Color.black.opacity(0.7))
+                        .cornerRadius(10)
                         HStack {
-                                            Text(showView)
+                            Text(showView)
                             Slider(value: $filter.filterIntensity)
                                 .onChange(of: filter.filterIntensity) { _ in filter.applyProcessing() }
-                                        }
-                                        .padding(.vertical)
-                        Text("ENTER YOUR PROMPT BELOW")
-                            .foregroundColor(Color.black)
-                            .font(.caption2.bold())
-                        TextField("Enter your prompt", text: $prompt)
-                                      .padding(7)
-                                      .padding(.horizontal, 25)
-                                      .background(Color(.systemGray6))
-                                      .cornerRadius(8)
-                                      .padding(.horizontal, 10)
-                        Button{
-                            Task {
-                                isLoading = true
-                                    filter.image = await viewModel.generateImage(from: prompt)
-                                isLoading = false
-                            }
-                        }label: {
-                            Text("Generate")
+                        }
+                        .padding(.vertical)
+                    }
+                    Text("ENTER YOUR PROMPT BELOW")
+                        .foregroundColor(Color.black)
+                        .font(.caption2.bold())
+                    TextField("Enter your prompt", text: $prompt)
+                        .padding(7)
+                        .padding(.horizontal, 25)
+                        .background(Color(.systemGray6))
+                        .cornerRadius(10)
+                        .padding(.horizontal, 10)
+                    Button{
+                        Task {
+                            isLoading = true
+                            filter.image = await viewModel.generateImage(from: prompt)
+                            isLoading = false
+                        }
+                    }label: {
+                        Text("Generate")
                             .foregroundColor(.white)
-                            
                             .onAppear {
                                 viewModel.setup()
                             }
-                        }
-                        .frame(width: 350  ,height: 45)
-                        .background(.black)
-                        .cornerRadius(25)
-                        .padding(.vertical ,15)
                     }
+                    .frame(width: 350  ,height: 45)
+                    .background(.black)
+                    .cornerRadius(10)
+                    .padding(.vertical ,15)
                 }
+                .padding(.top ,10)
             }
             .confirmationDialog("Select a filter", isPresented: $filter.showingFilterSheet) {
-              
                 Button("Edges") { filter.setFilter(CIFilter.edges())
                     showView = "Edges"
-                    filter.filterIntensity = 0.0
                 }
                 Button("Gaussian Blur") {filter.setFilter(CIFilter.gaussianBlur())
                     showView = "Gaussian Blur"
-                    filter.filterIntensity = 0.0
                 }
                 Button("Pixellate") { filter.setFilter(CIFilter.pixellate())
                     showView = "Pixellate"
-                    filter.filterIntensity = 0.0
                 }
                 Button("Sepia Tone") { filter.setFilter(CIFilter.sepiaTone())
                     showView = "Sepia Tone"
-                    filter.filterIntensity = 0.0
                 }
                 Button("Unsharp Mask") { filter.setFilter(CIFilter.unsharpMask())
                     showView = "Unsharp Mask"
-                        filter.filterIntensity = 0.0
                 }
                 Button("Vignette") { filter.setFilter(CIFilter.vignette())
                     showView = "Vignette"
-                    filter.filterIntensity = 0.0
                 }
                 Button("Crystallize") { filter.setFilter(CIFilter.crystallize())
                     showView = "Crystallize"
-                    filter.filterIntensity = 0.0
                 }
                             Button("Cancel", role: .cancel) { }
                         }
@@ -143,10 +132,12 @@ struct HomeView: View {
                     }
                     .cornerRadius(100)
                             }
+                
                     }
             .navigationTitle("Image Generator Ai")
             .navigationBarTitleDisplayMode(.inline)
             .background(Color("backgroundColor"))
         }
+        }
     }
-}
+
