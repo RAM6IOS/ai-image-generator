@@ -21,6 +21,7 @@
 		2DC0C7B829B0AFB70027A21F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC0C7B729B0AFB70027A21F /* HomeView.swift */; };
 		2DC0C7BC29B0B03B0027A21F /* ImageGeneratorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC0C7BB29B0B03B0027A21F /* ImageGeneratorViewModel.swift */; };
 		2DC0C7BE29B0B1AE0027A21F /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC0C7BD29B0B1AE0027A21F /* FilterViewModel.swift */; };
+		2DDFB3E729B3C022008D539C /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DDFB3E629B3C022008D539C /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		2DC0C7B729B0AFB70027A21F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		2DC0C7BB29B0B03B0027A21F /* ImageGeneratorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGeneratorViewModel.swift; sourceTree = "<group>"; };
 		2DC0C7BD29B0B1AE0027A21F /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
+		2DDFB3E629B3C022008D539C /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 				2DC0C7BB29B0B03B0027A21F /* ImageGeneratorViewModel.swift */,
 				2DC0C7BD29B0B1AE0027A21F /* FilterViewModel.swift */,
 				2D7583A529B38EDB0017E081 /* Launch Screen.storyboard */,
+				2DDFB3E629B3C022008D539C /* Launch Screen.storyboard */,
 			);
 			path = image12;
 			sourceTree = "<group>";
@@ -166,6 +169,7 @@
 			files = (
 				2D27A01629A77EAD008F9A08 /* Preview Assets.xcassets in Resources */,
 				2D7583A629B38EDB0017E081 /* Launch Screen.storyboard in Resources */,
+				2DDFB3E729B3C022008D539C /* Launch Screen.storyboard in Resources */,
 				2D27A01229A77EAD008F9A08 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
