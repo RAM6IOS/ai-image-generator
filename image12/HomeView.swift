@@ -14,6 +14,7 @@ struct HomeView: View {
     @StateObject var model = DrawingViewModel()
     @StateObject var filter = FilterViewModel()
     @State var showView = "Crystallize"
+    @State var showshit:Bool = false
     var body: some View {
         NavigationView{
             VStack{
@@ -84,6 +85,10 @@ struct HomeView: View {
                 }
                 .padding(.top ,10)
             }
+            .sheet(isPresented:$showshit ){
+                AboutView()
+                
+            }
             .confirmationDialog("Select a filter", isPresented: $filter.showingFilterSheet) {
                 Button("Edges") { filter.setFilter(CIFilter.edges())
                     showView = "Edges"
@@ -110,15 +115,13 @@ struct HomeView: View {
                         }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Menu("Actions"){
+                    Menu("Menu"){
                         Button{
-                            
+                            showshit.toggle()
                         } label: {
                             Text("About")
                         }
-                       
                             Link("Privacy Policy", destination: URL(string: "https://www.app-privacy-policy.com/live.php?token=OAsUAHyVsmgZBGvJNq685DYq2d91JQbt")!)
-                        
                         Button("Filter") {
                             filter.showingFilterSheet = true
                         }
@@ -127,7 +130,6 @@ struct HomeView: View {
                          }
                     }
                 }
-
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button{
                      filter.writeToPhotoAlbum(image: filter.image!)
@@ -140,7 +142,6 @@ struct HomeView: View {
                     }
                     .cornerRadius(100)
                             }
-                
                     }
             .navigationTitle("Image Generator Ai")
             .navigationBarTitleDisplayMode(.inline)
