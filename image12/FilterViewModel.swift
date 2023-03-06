@@ -20,6 +20,8 @@ class FilterViewModel : NSObject, ObservableObject {
     @Published var showingFilterSheet = false
     @Published var lodimage = false
     @Published  var image : UIImage?
+    @Published var showView = "Crystallize"
+    @Published var showshit:Bool = false
     
     func nillimage(){
            image = nil

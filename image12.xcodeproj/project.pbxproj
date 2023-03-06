@@ -22,6 +22,7 @@
 		2DC0C7BC29B0B03B0027A21F /* ImageGeneratorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC0C7BB29B0B03B0027A21F /* ImageGeneratorViewModel.swift */; };
 		2DC0C7BE29B0B1AE0027A21F /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC0C7BD29B0B1AE0027A21F /* FilterViewModel.swift */; };
 		2DDFB3E729B3C022008D539C /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DDFB3E629B3C022008D539C /* Launch Screen.storyboard */; };
+		2DF22CE029B659F7002458A7 /* ExtensionColor .swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF22CDF29B659F7002458A7 /* ExtensionColor .swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		2DC0C7BB29B0B03B0027A21F /* ImageGeneratorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGeneratorViewModel.swift; sourceTree = "<group>"; };
 		2DC0C7BD29B0B1AE0027A21F /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
 		2DDFB3E629B3C022008D539C /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		2DF22CDF29B659F7002458A7 /* ExtensionColor .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExtensionColor .swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 				2DC0C7BD29B0B1AE0027A21F /* FilterViewModel.swift */,
 				2DDFB3E629B3C022008D539C /* Launch Screen.storyboard */,
 				2D43210D29B5F8F500F18209 /* AboutView.swift */,
+				2DF22CDF29B659F7002458A7 /* ExtensionColor .swift */,
 			);
 			path = image12;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 				2D316C2829AD321C0024075B /* TextBox.swift in Sources */,
 				2DC0C7BE29B0B1AE0027A21F /* FilterViewModel.swift in Sources */,
 				2D2F334729A7F4AA00AD3AEF /* DrawingViewModel.swift in Sources */,
+				2DF22CE029B659F7002458A7 /* ExtensionColor .swift in Sources */,
 				2D43210E29B5F8F500F18209 /* AboutView.swift in Sources */,
 				2D27A00E29A77EA9008F9A08 /* image12App.swift in Sources */,
 				2D2F334529A7F47600AD3AEF /* DrawingScren.swift in Sources */,
