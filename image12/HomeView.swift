@@ -14,7 +14,6 @@ struct HomeView: View {
     @StateObject var model = DrawingViewModel()
     @StateObject var filter = FilterViewModel()
     @State var showView = "Crystallize"
-   
     var body: some View {
         NavigationView{
             VStack{
@@ -111,15 +110,24 @@ struct HomeView: View {
                         }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Deleet") {
-                    filter.nillimage()
+                    Menu("Actions"){
+                        Button{
+                            
+                        } label: {
+                            Text("About")
+                        }
+                       
+                            Link("Privacy Policy", destination: URL(string: "https://www.app-privacy-policy.com/live.php?token=OAsUAHyVsmgZBGvJNq685DYq2d91JQbt")!)
+                        
+                        Button("Filter") {
+                            filter.showingFilterSheet = true
+                        }
+                        Button("Deleet") {
+                          filter.nillimage()
+                         }
                     }
                 }
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Filter") {
-                        filter.showingFilterSheet = true
-                    }
-                }
+
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button{
                      filter.writeToPhotoAlbum(image: filter.image!)
