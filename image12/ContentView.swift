@@ -16,7 +16,7 @@ struct ContentView2: View {
         ZStack{
             NavigationView{
                 VStack{
-                    if var image = model.image{
+                    if model.image != nil{
                         ZStack{
                             DrawingScren()
                                 .environmentObject(model)
