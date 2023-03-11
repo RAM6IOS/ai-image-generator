@@ -28,23 +28,13 @@ class FilterViewModel : NSObject, ObservableObject {
     }
     func loadImage() {
         guard let inputImage = image else { return }
-
-
             let beginImage = CIImage(image: inputImage)
+            //let myFilter = CIFilter(name: "myFilter")
+            //myFilter?.setValue(beginImage, forKey: kCIInputImageKey)
             currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
+            
             applyProcessing()
         }
-    func lodimage2(){
-        lodimage = true
-        if lodimage {
-            let inputKeys = currentFilter.inputKeys
-
-            if inputKeys.contains(kCIInputIntensityKey) { currentFilter.setValue(0, forKey: kCIInputIntensityKey) }
-            if inputKeys.contains(kCIInputRadiusKey) { currentFilter.setValue(0, forKey: kCIInputRadiusKey) }
-            if inputKeys.contains(kCIInputScaleKey) { currentFilter.setValue(0, forKey: kCIInputScaleKey) }
-        }
-        
-    }
     func applyProcessing() {
             let inputKeys = currentFilter.inputKeys
 

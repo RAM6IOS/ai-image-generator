@@ -6,19 +6,23 @@
 //
 
 import XCTest
+import UIKit
+import CoreImage
 @testable import image12
 
 final class image12Tests: XCTestCase {
     var myTestClass: FilterViewModel!
+    var loadImageCallCount = 0
+    var testImage: UIImage?
     override func setUp() {
             super.setUp()
             myTestClass = FilterViewModel()
+        testImage = UIImage(named: "test_image")
+        
         }
 
-    
-
     override func tearDown() {
-        
+        testImage = nil
     }
 
     func testExample() throws {
@@ -36,7 +40,37 @@ final class image12Tests: XCTestCase {
         waitForExpectations(timeout: 5.0, handler: nil)
         XCTAssert(true, "writeToPhotoAlbum() function was called without errors.")
     }
+    func testLoadImage() {
+        // Create a test image.
+        let testImage = UIImage(named: "artificial-intelligence")
+        let myFilter = CIFilter.sepiaTone()
 
+        myTestClass.image = testImage
+
+        myTestClass.currentFilter = myFilter
+        // Call the loadImage() function to load the test image and apply a filter to it.
+        myTestClass.loadImage()
+
+        // Assert that the outputImage variable of the filter is not nil.
+        XCTAssertNotNil(myTestClass.currentFilter.outputImage, "outputImage should not be nil")
+
+        
+    }
+    func testSetFilter() {
+       // let testImage = UIImage(named: "artificial-intelligence")
+            let sepiaFilter = CIFilter(name: "CISepiaTone")
+        sepiaFilter?.setValue(CIImage(image: (testImage ?? UIImage(named: "artificial-intelligence"))!), forKey: kCIInputImageKey)
+            
+            let invertFilter = CIFilter(name: "CIColorInvert")
+        invertFilter?.setValue(CIImage(image: (testImage ?? UIImage(named: "artificial-intelligence"))!), forKey: kCIInputImageKey)
+            
+        myTestClass.setFilter(sepiaFilter!)
+            XCTAssertEqual(myTestClass.currentFilter, sepiaFilter!)
+            
+        myTestClass.setFilter(invertFilter!)
+            XCTAssertEqual(myTestClass.currentFilter, invertFilter!)
+        }
+    
    /* func testPerformanceExample() throws {
         // This is an example of a performance test case.
         measure {
