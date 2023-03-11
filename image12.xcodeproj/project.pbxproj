@@ -37,6 +37,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		2D56644E29BB65CC00F9B9C8 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		2D27A00A29A77EA9008F9A08 /* image12.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = image12.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D27A00D29A77EA9008F9A08 /* image12App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = image12App.swift; sourceTree = "<group>"; };
@@ -48,6 +61,8 @@
 		2D2F334629A7F4AA00AD3AEF /* DrawingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingViewModel.swift; sourceTree = "<group>"; };
 		2D316C2729AD321C0024075B /* TextBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBox.swift; sourceTree = "<group>"; };
 		2D43210D29B5F8F500F18209 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		2D56643E29BB65C500F9B9C8 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		2D56644029BB65C500F9B9C8 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		2D6816B329B7A1D80017599C /* image12Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = image12Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D6816B529B7A1D80017599C /* image12Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = image12Tests.swift; sourceTree = "<group>"; };
 		2DC0C7B729B0AFB70027A21F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -84,6 +99,7 @@
 			children = (
 				2D27A00C29A77EA9008F9A08 /* image12 */,
 				2D6816B429B7A1D80017599C /* image12Tests */,
+				2D56643D29BB65C500F9B9C8 /* Frameworks */,
 				2D27A00B29A77EA9008F9A08 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -127,6 +143,15 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		2D56643D29BB65C500F9B9C8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2D56643E29BB65C500F9B9C8 /* WidgetKit.framework */,
+				2D56644029BB65C500F9B9C8 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2D6816B429B7A1D80017599C /* image12Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +170,7 @@
 				2D27A00629A77EA9008F9A08 /* Sources */,
 				2D27A00729A77EA9008F9A08 /* Frameworks */,
 				2D27A00829A77EA9008F9A08 /* Resources */,
+				2D56644E29BB65CC00F9B9C8 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
