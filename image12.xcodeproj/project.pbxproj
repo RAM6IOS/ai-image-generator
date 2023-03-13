@@ -8,15 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		2D27A00E29A77EA9008F9A08 /* image12App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D27A00D29A77EA9008F9A08 /* image12App.swift */; };
-		2D27A01029A77EA9008F9A08 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D27A00F29A77EA9008F9A08 /* ContentView.swift */; };
 		2D27A01229A77EAD008F9A08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D27A01129A77EAD008F9A08 /* Assets.xcassets */; };
 		2D27A01629A77EAD008F9A08 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D27A01529A77EAD008F9A08 /* Preview Assets.xcassets */; };
 		2D27A02229A78DAC008F9A08 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2D27A02129A78DAC008F9A08 /* Alamofire */; };
 		2D27A02529A78DCE008F9A08 /* OpenAIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2D27A02429A78DCE008F9A08 /* OpenAIKit */; };
 		2D27A02829A78DE7008F9A08 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 2D27A02729A78DE7008F9A08 /* SwiftyJSON */; };
-		2D2F334529A7F47600AD3AEF /* DrawingScren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2F334429A7F47600AD3AEF /* DrawingScren.swift */; };
-		2D2F334729A7F4AA00AD3AEF /* DrawingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2F334629A7F4AA00AD3AEF /* DrawingViewModel.swift */; };
-		2D316C2829AD321C0024075B /* TextBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D316C2729AD321C0024075B /* TextBox.swift */; };
 		2D43210E29B5F8F500F18209 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D43210D29B5F8F500F18209 /* AboutView.swift */; };
 		2D6816B629B7A1D80017599C /* image12Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6816B529B7A1D80017599C /* image12Tests.swift */; };
 		2DC0C7B829B0AFB70027A21F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC0C7B729B0AFB70027A21F /* HomeView.swift */; };
@@ -53,13 +49,9 @@
 /* Begin PBXFileReference section */
 		2D27A00A29A77EA9008F9A08 /* image12.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = image12.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D27A00D29A77EA9008F9A08 /* image12App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = image12App.swift; sourceTree = "<group>"; };
-		2D27A00F29A77EA9008F9A08 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2D27A01129A77EAD008F9A08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2D27A01329A77EAD008F9A08 /* image12.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = image12.entitlements; sourceTree = "<group>"; };
 		2D27A01529A77EAD008F9A08 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		2D2F334429A7F47600AD3AEF /* DrawingScren.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingScren.swift; sourceTree = "<group>"; };
-		2D2F334629A7F4AA00AD3AEF /* DrawingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingViewModel.swift; sourceTree = "<group>"; };
-		2D316C2729AD321C0024075B /* TextBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBox.swift; sourceTree = "<group>"; };
 		2D43210D29B5F8F500F18209 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		2D56643E29BB65C500F9B9C8 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		2D56644029BB65C500F9B9C8 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -117,13 +109,9 @@
 			isa = PBXGroup;
 			children = (
 				2D27A00D29A77EA9008F9A08 /* image12App.swift */,
-				2D27A00F29A77EA9008F9A08 /* ContentView.swift */,
 				2D27A01129A77EAD008F9A08 /* Assets.xcassets */,
 				2D27A01329A77EAD008F9A08 /* image12.entitlements */,
 				2D27A01429A77EAD008F9A08 /* Preview Content */,
-				2D2F334429A7F47600AD3AEF /* DrawingScren.swift */,
-				2D2F334629A7F4AA00AD3AEF /* DrawingViewModel.swift */,
-				2D316C2729AD321C0024075B /* TextBox.swift */,
 				2DC0C7B729B0AFB70027A21F /* HomeView.swift */,
 				2DC0C7BB29B0B03B0027A21F /* ImageGeneratorViewModel.swift */,
 				2DC0C7BD29B0B1AE0027A21F /* FilterViewModel.swift */,
@@ -272,15 +260,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D27A01029A77EA9008F9A08 /* ContentView.swift in Sources */,
-				2D316C2829AD321C0024075B /* TextBox.swift in Sources */,
 				2DC0C7BE29B0B1AE0027A21F /* FilterViewModel.swift in Sources */,
 				2DF22CE229B65FB7002458A7 /* GetStarted.swift in Sources */,
-				2D2F334729A7F4AA00AD3AEF /* DrawingViewModel.swift in Sources */,
 				2DF22CE029B659F7002458A7 /* ExtensionColor .swift in Sources */,
 				2D43210E29B5F8F500F18209 /* AboutView.swift in Sources */,
 				2D27A00E29A77EA9008F9A08 /* image12App.swift in Sources */,
-				2D2F334529A7F47600AD3AEF /* DrawingScren.swift in Sources */,
 				2DC0C7B829B0AFB70027A21F /* HomeView.swift in Sources */,
 				2DC0C7BC29B0B03B0027A21F /* ImageGeneratorViewModel.swift in Sources */,
 			);
