@@ -57,7 +57,6 @@ final class image12Tests: XCTestCase {
         
     }
     func testSetFilter() {
-       // let testImage = UIImage(named: "artificial-intelligence")
             let sepiaFilter = CIFilter(name: "CISepiaTone")
         sepiaFilter?.setValue(CIImage(image: (testImage ?? UIImage(named: "artificial-intelligence"))!), forKey: kCIInputImageKey)
             
@@ -88,25 +87,9 @@ final class image12Tests: XCTestCase {
             // Call the applyProcessing() function
         myTestClass.applyProcessing()
             
-            // Check that the output image is not nil
-          //  XCTAssertNotNil(myTestClass.image, "Output image is nil")
-       // XCTAssertNotNil(myTestClass.image, " image should not be nil")
-            // Check that the output image is not the same as the input image
-           // XCTAssertNotEqual(myTestClass.image, UIImage(named: "inputImage"), "Input and output images are the same")
-            
-            // Check that the output image has the same size as the input image
             XCTAssertEqual(myTestClass.image?.size, UIImage(named: "inputImage")?.size, "Input and output images have different sizes")
         }
     
    
-
-    
-    
-   /* func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
-        }
-    }*/
 
 }
